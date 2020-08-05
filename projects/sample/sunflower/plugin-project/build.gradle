@@ -15,7 +15,7 @@
  */
 
 buildscript {
-    ext.shadow_version = '2.0.12-c3a2c91f-SNAPSHOT'
+    ext.shadow_version = 'afra55-2.0.12'
     // Define versions in a single place
     ext {
         // Sdk and tools
