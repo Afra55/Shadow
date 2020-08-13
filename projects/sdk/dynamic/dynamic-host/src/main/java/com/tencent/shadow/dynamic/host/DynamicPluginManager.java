@@ -63,6 +63,8 @@ public final class DynamicPluginManager implements PluginManager {
 
     private void updateManagerImpl(Context context) {
         File latestManagerImplApk = mUpdater.getLatest();
+
+        // 文件最后修改日期
         long lastModified = latestManagerImplApk.lastModified();
         if (mLogger.isInfoEnabled()) {
             mLogger.info("mLastModified != lastModified : " + (mLastModified != lastModified));

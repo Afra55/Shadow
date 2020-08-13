@@ -71,18 +71,23 @@ class ApkClassLoader extends DexClassLoader {
         if (isInterface) {
             return super.loadClass(className, resolve);
         } else {
+            // 首先判断是否已经加载过
             Class<?> clazz = findLoadedClass(className);
 
             if (clazz == null) {
+                // 如果没有加载过
                 ClassNotFoundException suppressed = null;
                 try {
+                    // 自己加载
                     clazz = findClass(className);
                 } catch (ClassNotFoundException e) {
                     suppressed = e;
+                    // 加载失败
                 }
 
                 if (clazz == null) {
                     try {
+                        // clazz 没有加载成功，则 parent 加载
                         clazz = mGrandParent.loadClass(className);
                     } catch (ClassNotFoundException e) {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
