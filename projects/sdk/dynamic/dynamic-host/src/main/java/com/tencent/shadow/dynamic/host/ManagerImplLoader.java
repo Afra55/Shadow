@@ -57,10 +57,12 @@ final class ManagerImplLoader extends ImplLoader {
         );
 
         try {
+            // 通过classloader 拿到 manager apk 里面的 com.tencent.shadow.dynamic.impl.ManagerFactoryImpl
             ManagerFactory managerFactory = apkClassLoader.getInterface(
                     ManagerFactory.class,
                     MANAGER_FACTORY_CLASS_NAME
             );
+            // 获得所需要的 PluginManagerImpl
             return managerFactory.buildManager(pluginManagerContext);
         } catch (Exception e) {
             throw new RuntimeException(e);

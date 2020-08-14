@@ -47,6 +47,7 @@ public final class DynamicPluginManager implements PluginManager {
             mLogger.info("enter fromId:" + fromId + " callback:" + callback);
         }
         updateManagerImpl(context);
+        // manager apk 里面的 enter
         mManagerImpl.enter(context, fromId, bundle, callback);
         mUpdater.update();
     }
@@ -71,6 +72,7 @@ public final class DynamicPluginManager implements PluginManager {
         }
         if (mLastModified != lastModified) {
             ManagerImplLoader implLoader = new ManagerImplLoader(context, latestManagerImplApk);
+            // 获得 manager 包里面PluginManager 接口的实现
             PluginManagerImpl newImpl = implLoader.load();
             Bundle state;
             if (mManagerImpl != null) {
