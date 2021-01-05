@@ -4,7 +4,7 @@
 //请更新buildscript时同步更新。
 buildscript {
     ext.kotlin_version = '1.4.10'
-    ext.build_gradle_version = '4.0.2'
+    ext.build_gradle_version = '3.6.3'
     repositories {
         google()
         jcenter()
